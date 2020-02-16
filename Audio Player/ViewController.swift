@@ -92,12 +92,15 @@ class ViewController: UIViewController {
     }
 
     func playAudio(filename: String, fileExtension: String) {
+        
+      // Getting audio file path
       let audio = Bundle.main.path(forResource: filename, ofType: fileExtension)
       
       do {
           audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audio!))
           audioPlayer.prepareToPlay()
           
+          // Creating audio player session
           let audioSession = AVAudioSession.sharedInstance()
           try audioSession.setCategory(
               AVAudioSession.Category.playback,
